@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  yggdrasil:
+    image: yggdrasilnetwork/yggdrasil:latest
+    container_name: yggdrasil-node
+    network_mode: host
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - yggdrasil-config:/etc/yggdrasil
+      - yggdrasil-socket:/var/run/yggdrasil
+    command: -useconffile /etc/yggdrasil/yggdrasil.conf
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yggdrasil-commander
+    ports:
+      - "80:5000"
+    volumes:
+      - yggdrasil-socket:/var/run/yggdrasil:ro
+    depends_on:
+      - yggdrasil
+    restart: unless-stopped
+    environment:
+      - YGGDRASIL_SOCKET=/var/run/yggdrasil/yggdrasil.sock
+      - FLASK_ENV=production
+
+volumes:
+  yggdrasil-config:
+  yggdrasil-socket:
