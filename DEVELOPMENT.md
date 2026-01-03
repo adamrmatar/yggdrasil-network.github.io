@@ -107,27 +107,27 @@ Flask (Port 5000 → 80)
 
 ## API Endpoints
 
-### `GET /api/status`
+### Core Endpoints
 
-Health check endpoint that reports:
-- Backend status
-- Yggdrasil socket connectivity
-- Socket path
-- Backend version
+#### `GET /api/status`
+Health check - reports backend and socket status
 
-**Response:**
-```json
-{
-  "status": "ok",
-  "yggdrasil_socket": "connected",
-  "socket_path": "/var/run/yggdrasil/yggdrasil.sock",
-  "backend_version": "0.1.0"
-}
-```
+#### `GET /api/self`
+Get node information (address, key, coords, subnet)
 
-### `GET /api/node/info`
+#### `GET /api/peers`
+List all connected peers
 
-Placeholder for Yggdrasil node information (not yet implemented).
+#### `GET /api/invite`
+Generate QR code invite for peer connections
+
+#### `POST /api/bootstrap`
+**Magic Button** - Automatically add public peers and connect
+
+#### `POST /api/exit-node`
+Enable/disable exit node (VPN gateway) functionality
+
+**Full API documentation**: See [`backend/API.md`](backend/API.md)
 
 ## Design System
 
@@ -153,7 +153,7 @@ Placeholder for Yggdrasil node information (not yet implemented).
 
 **StatusCard**: Displays service/node status with animated indicator
 ```tsx
-<StatusCard 
+<StatusCard
   title="Backend API"
   status="active" // 'active' | 'inactive' | 'error'
   details="Version 0.1.0"
@@ -224,12 +224,16 @@ docker run -p 80:5000 \
 
 ## Roadmap
 
-- [ ] Implement Yggdrasil admin socket communication
-- [ ] Peer management interface
-- [ ] Real-time node statistics
-- [ ] Configuration editor
+- [x] Implement Yggdrasil admin socket communication
+- [x] Zero-config bootstrap with public peers
+- [x] Exit node (VPN gateway) support
+- [x] QR code invite generation
+- [ ] Peer management interface (UI)
+- [ ] Real-time node statistics dashboard
+- [ ] Configuration editor UI
 - [ ] Network topology visualization
 - [ ] Multi-node management
+- [ ] WebSocket real-time updates
 
 ## License
 

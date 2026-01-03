@@ -10,6 +10,9 @@ Yggdrasil Commander is designed to compete with Tailscale on ease of use while m
 - 🎨 **Clean Design**: Minimalist interface inspired by Apple system utilities
 - 🐳 **Docker Native**: One-command deployment with Docker Compose
 - 🔧 **Full Control**: Direct access to your Yggdrasil node via admin socket
+- ⚡ **Zero-Config**: One-click bootstrap with public peers
+- 📱 **QR Invites**: Generate QR codes for easy peer connections
+- 🌐 **Exit Node**: Turn your node into a VPN gateway for others
 
 ## Stack
 
@@ -121,17 +124,26 @@ docker-compose down
 ## API Endpoints
 
 - `GET /api/status` - Backend and Yggdrasil socket health check
-- `GET /api/node/info` - Node information (implementation pending)
+- `GET /api/self` - Get node information (address, key, coords)
+- `GET /api/peers` - List connected peers
+- `GET /api/invite` - Generate QR code invite for peering
+- `POST /api/bootstrap` - Auto-connect to public peers (magic button)
+- `POST /api/exit-node` - Enable/disable VPN gateway mode
+
+**Full API docs**: [`backend/API.md`](backend/API.md)
 
 ## Roadmap
 
 - [x] Basic UI scaffold with navigation
 - [x] Backend API with socket detection
 - [x] Full stack integration
-- [ ] Yggdrasil admin socket communication
-- [ ] Peer management interface
+- [x] Yggdrasil admin socket communication
+- [x] Zero-config bootstrap with public peers
+- [x] Exit node (VPN gateway) support
+- [x] QR code invite generation
+- [ ] Peer management interface (UI)
 - [ ] Real-time node statistics
-- [ ] Configuration editor
+- [ ] Configuration editor (UI)
 - [ ] Network visualization
 
 ## Contributing
