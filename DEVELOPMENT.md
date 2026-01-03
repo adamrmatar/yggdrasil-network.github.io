@@ -228,9 +228,11 @@ docker run -p 80:5000 \
 - [x] Zero-config bootstrap with public peers
 - [x] Exit node (VPN gateway) support
 - [x] QR code invite generation
-- [ ] Peer management interface (UI)
-- [ ] Real-time node statistics dashboard
-- [ ] Configuration editor UI
+- [x] Peer management interface (UI)
+- [x] Real-time node statistics dashboard
+- [x] First-run wizard with confetti
+- [x] Settings page with exit node toggle
+- [ ] Manual peer addition endpoint
 - [ ] Network topology visualization
 - [ ] Multi-node management
 - [ ] WebSocket real-time updates

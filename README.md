@@ -141,10 +141,13 @@ docker-compose down
 - [x] Zero-config bootstrap with public peers
 - [x] Exit node (VPN gateway) support
 - [x] QR code invite generation
-- [ ] Peer management interface (UI)
-- [ ] Real-time node statistics
-- [ ] Configuration editor (UI)
-- [ ] Network visualization
+- [x] Peer management interface (UI)
+- [x] Real-time node statistics
+- [x] First-run wizard with confetti
+- [x] Settings page with exit node toggle
+- [ ] Manual peer addition endpoint
+- [ ] Network topology visualization
+- [ ] WebSocket real-time updates
 
 ## Contributing
 
